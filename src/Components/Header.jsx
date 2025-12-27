@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
-const Header = () => {
+const Header = ({ setShowBox }) => {
     return (
         <div className='bg-orange-400'>
 
@@ -11,8 +11,14 @@ const Header = () => {
 
                 <h1 className='text-white text-[22px]'>TO-DO</h1>
 
-               <FontAwesomeIcon icon={faPlus} className="text-xl text-amber-50 pr-3
-                    pt-3 pb-3" />
+                <button
+                    className="cursor-pointer text-amber-50 text-[30px]"
+                    onClick={() => setShowBox(prev => [...prev, { id: Date.now() }])}
+                >
+                    +
+                </button>
+
+
 
 
             </div>

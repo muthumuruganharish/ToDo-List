@@ -13,7 +13,11 @@ const Header = ({ setShowBox }) => {
 
                 <button
                     className="cursor-pointer text-amber-50 text-[30px]"
-                    onClick={() => setShowBox(prev => [...prev, { id: Date.now() }])}
+                    onClick={() => setShowBox(prev => [...prev, { 
+                        id: Date.now() , //Date is used to create a unique ID
+                        title:""
+
+                    }])}
                 >
                     +
                 </button>

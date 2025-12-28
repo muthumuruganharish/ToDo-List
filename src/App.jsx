@@ -8,7 +8,7 @@ const App = () => {
     <div>
 
       <Header setShowBox={setShowBox} />
-      <OrangeBox showBox={showBox} />
+<OrangeBox showBox={showBox} setShowBox={setShowBox} />
 
     </div>
   )

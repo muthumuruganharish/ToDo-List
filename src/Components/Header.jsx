@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 const Header = ({ setShowBox }) => {
@@ -16,8 +17,10 @@ const Header = ({ setShowBox }) => {
                     onClick={() => setShowBox(prev => [...prev, { 
                         id: Date.now() , //Date is used to create a unique ID
                         title:"",
-                        task:"",
-                        completed:false
+                        task:[{
+                            id:Date.now(),text:"",completed:false
+                        }],
+                        
 
                     }])}
                 >

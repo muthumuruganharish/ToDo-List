@@ -76,13 +76,13 @@ src/
 
 - Each **box** contains an array of **tasks**
 - Each **task** has:
-  ```js
+  js
   {
     id,
     text,
     completed
   }
-````
+
 
 * Tasks are updated using `map()`
 * Tasks are deleted using `filter()`
@@ -94,9 +94,9 @@ src/
 
 1. Clone the repository
 
-   ```bash
+   bash
    git clone https://github.com/your-username/your-repo-name.git
-   ```
+   
 
 2. Install dependencies
 

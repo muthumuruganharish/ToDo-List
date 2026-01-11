@@ -13,7 +13,7 @@ const Header = ({ setShowBox }) => {
                 <h1 className='text-white text-[22px]'>TO-DO</h1>
 
                 <button
-                    className="cursor-pointer text-amber-50 text-[30px]"
+                    className="cursor-pointer text-amber-50 text-[33px] mr-3"
                     onClick={() => setShowBox(prev => [...prev, { 
                         id: Date.now() , //Date is used to create a unique ID
                         title:"",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const OrangeBox = ({ showBox, setShowBox }) => {
 
@@ -81,6 +81,71 @@ const OrangeBox = ({ showBox, setShowBox }) => {
 
   }
 
+  //------------------- now drag function
+//This state remembers WHICH task you are currently dragging.
+  const [dragInfo, setDragInfo]=useState({
+    id:null,
+    taskId:null
+  })
+
+  //-----------Drag Start------------
+
+  const handleDragStart=(id,taskId )=>{
+
+    setDragInfo({id,taskId})
+
+  }
+  // ------------Drag drop-----------
+
+ const  handleDrop=(id,taskId)=>{
+
+ setShowBox(prev=>prev.map(
+ box=>{
+  if (box.id!==id) return box; // it will eliminate other unwanted boxes
+
+  const tasks=[...box.task] //it will copy all the task from the box
+
+  const draggedIndex=tasks.findIndex( //here we findintg the dragged index from dragInfo useState
+    t1=>t1.id===dragInfo.taskId
+  )
+
+  const targetIndex=tasks.findIndex( //here we finding the drop index, where we droped 
+    t1=>t1.id===taskId //taskId will carry the Drop ID
+    //by comparing with all tasks we can find the drop ID that will then with the help of findIndex we will find its drop Index
+    //and store it in targetIndex
+
+  )
+
+  //now we have draggedIndex & targetIndex(drop index)
+
+   if (draggedIndex === -1 || targetIndex === -1) return box;
+
+   const [draggedTask]=tasks.splice(draggedIndex,1) // here we store the dragged task in  draggedTask variable and remove it from tasks
+   //splice means=>here  tasks.splice(draggedIndex,1) 1 is delete index
+   
+   //array.splice(startIndex, deleteCount, itemToInsert);
+
+   tasks.splice(targetIndex,0,draggedTask)
+
+   return{...box,task:tasks}
+
+
+
+
+
+
+
+
+
+ } 
+
+  
+
+
+))
+
+ }
+
 
   return (
     <div className="p-6 flex gap-4 flex-wrap">
@@ -89,10 +154,12 @@ const OrangeBox = ({ showBox, setShowBox }) => {
 
         <div
           key={box.id}
-          className="w-80 bg-orange-400 p-4 rounded"
+          className="w-[340px] h-[400px] bg-orange-400 p-4 rounded-xl
+                     shadow-lg hover:shadow-xl transition-shadow
+                     max-h-[420px] overflow-y-auto"
         >
 
-          <div className="flex" >
+          <div className="flex items-center mb-4" >
 
             {/* TITLE (never strike-through) */}
             <input
@@ -124,7 +191,22 @@ const OrangeBox = ({ showBox, setShowBox }) => {
 
 
           {box.task.map(task => (
+
+            
             <div className="flex" key={task.id}>
+
+              <div draggable="true"
+                onDragStart={()=>handleDragStart(box.id,task.id)}
+                 onDragOver={(e)=>e.preventDefault()} 
+                 onDrop={()=>handleDrop(box.id,task.id)}
+                 className="flex items-center gap-3 mb-2   px-3 py-2 mt-1"
+
+                 >
+
+                <span className="cursor-grab select-none">☰</span>
+              </div>
+            
+
 
 
               {/* CHECKBOX + TASK */}

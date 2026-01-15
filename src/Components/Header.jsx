@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { text } from '@fortawesome/fontawesome-svg-core';
+import "../Style.css";
+
 
 
 const Header = ({ setShowBox }) => {
@@ -10,7 +12,7 @@ const Header = ({ setShowBox }) => {
 
             <div className='pl-3 pt-3 pb-3 flex justify-between' >
 
-                <h1 className='text-white text-[22px]'>TO-DO</h1>
+                <h1 className='text-white text-[22px] Title1'>TO-DO</h1>
 
                 <button
                     className="cursor-pointer text-amber-50 text-[33px] mr-3"
